@@ -7,32 +7,36 @@
   </head>
   <body>
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
       h2 {
-        font-size: 4rem;
+        font-size: 2rem;
+        margin: 1rem 0;
         text-align: center;
       }
       p {
-        font-size: 3rem;
+        font-size: 1.2rem;
         font-weight: 700;
         margin-top: 0;
         cursor: pointer;
       }
       p span {
         display: inline-block;
-        transition: transform .2s;
+        transform: rotate(0) scale(0.7);
+        transition: transform 0.2s;
       }
       p.active span {
-        
-        transform: rotate(90deg);
-        
+        transform: rotate(90deg) scale(0.7);
       }
       img {
-        height: 20rem;
+        height: 10rem;
         border: 1px solid #ccc;
       }
       .wrap {
-        border-bottom: 0.3rem solid rgba(0, 0, 0, 0.4);
-        padding: 3rem;
+        border-bottom: 0.1rem solid rgba(0, 0, 0, 0.4);
+        padding: 1.2rem;
       }
       .dim {
         display: inline-block;
@@ -53,13 +57,16 @@
         opacity: 0.5;
       }
       .box {
-        max-height: 100vh;
-        transition: max-height .2s;
+        max-height: 0;
+        margin-top: 0;
+        opacity: 0;
         overflow: hidden;
+        transition: max-height 0.2s, margin-top .2s, opacity .2s;
       }
       .box.active {
-        max-height: 0;
-        
+        opacity: 1;
+        max-height: 100vh;
+        margin-top: 1rem;
       }
     </style>
     <h2>✴️ Essential item ✴️</h2>
@@ -197,18 +204,18 @@
     </div>
 
     <script>
-      const arrowBtn = document.querySelectorAll('.arrow-btn');
+      const arrowBtn = document.querySelectorAll(".arrow-btn");
 
       arrowBtn.forEach((btn) => {
-        btn.addEventListener('click', () =>{
-          btn.classList.toggle('active')
+        btn.addEventListener("click", () => {
+          btn.classList.toggle("active");
 
           const box = btn.nextElementSibling;
-          if(box && box.classList.contains('box')){
-            box.classList.toggle('active')
+          if (box && box.classList.contains("box")) {
+            box.classList.toggle("active");
           }
-        })
-      })
+        });
+      });
     </script>
   </body>
 </html>
